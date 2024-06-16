@@ -1,6 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
-// const { createProxyMiddleware } = require('http-proxy-middleware');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 // const rateLimit = require('express-rate-limit');
 // const axios = require('axios');
 
@@ -37,7 +37,14 @@ app.use(morgan('combined'));
 //         })
 //     }
 // })
-// app.use('/bookingservice', createProxyMiddleware({ target: 'http://localhost:3002/', changeOrigin: true}));
+
+app.use('/bookingservice', createProxyMiddleware({
+    target: 'http://localhost:3002/',
+    changeOrigin: true,
+    pathRewrite: {
+        '^/bookingservice': '', // this will remove `/bookingservice` from the forwarded path
+    },
+}));
 
 app.get('/home', (req, res) => {
     return res.json({message: 'OK'});
