@@ -1,5 +1,5 @@
 const express = require('express');
-// const morgan = require('morgan');
+const morgan = require('morgan');
 // const { createProxyMiddleware } = require('http-proxy-middleware');
 // const rateLimit = require('express-rate-limit');
 // const axios = require('axios');
@@ -13,7 +13,7 @@ const PORT = 3004;
 // 	max: 5,
 // })
 
-// app.use(morgan('combined'));
+app.use(morgan('combined'));
 // app.use(limiter);
 // app.use('/bookingservice', async (req, res, next) => {
 //     console.log(req.headers['x-access-token']);
