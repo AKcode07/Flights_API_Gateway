@@ -10,7 +10,7 @@ const PORT = 3004;
 
 // const limiter = rateLimit({
 // 	windowMs: 2 * 60 * 1000,
-// 	max: 5, 
+// 	max: 5,
 // })
 
 // app.use(morgan('combined'));
@@ -38,9 +38,10 @@ const PORT = 3004;
 //     }
 // })
 // app.use('/bookingservice', createProxyMiddleware({ target: 'http://localhost:3002/', changeOrigin: true}));
-// app.get('/home', (req, res) => {
-//     return res.json({message: 'OK'});
-// })
+
+app.get('/home', (req, res) => {
+    return res.json({message: 'OK'});
+})
 
 app.listen(PORT, () => {
     console.log(`Server started at port ${PORT}`);
