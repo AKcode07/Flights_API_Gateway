@@ -2,11 +2,12 @@ const express = require('express');
 const morgan = require('morgan');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const rateLimit = require('express-rate-limit');
+
 // const axios = require('axios');
 
 const app = express();
 
-const PORT = 3004;
+const {PORT, BOOKING_PORT} = require('./config/serverConfig');
 
 const limiter = rateLimit({
 	windowMs: 2 * 60 * 1000, // Max 5 request from 1 IP in 2 min.
@@ -39,7 +40,7 @@ app.use(limiter);
 // })
 
 app.use('/bookingservice', createProxyMiddleware({
-    target: 'http://localhost:3002/',
+    target: `http://localhost:${BOOKING_PORT}/`,
     changeOrigin: true,
     pathRewrite: {
         '^/bookingservice': '', // this will remove `/bookingservice` from the forwarded path
