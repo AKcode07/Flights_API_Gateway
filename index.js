@@ -9,9 +9,9 @@ const app = express();
 
 // const {PORT, BOOKING_PORT, AUTH_PORT} = require('./config/serverConfig');
 
-PORT = 3004;
-BOOKING_PORT = 3002;
-AUTH_PORT = 3001;
+const PORT = 3004;
+const BOOKING_PORT = 3002;
+const AUTH_PORT = 3001;
 
 const limiter = rateLimit({
 	windowMs: 2 * 60 * 1000, // Max 5 request from 1 IP in 2 min.
